@@ -64,7 +64,8 @@ document.getElementById('btt').addEventListener('click',function(e){
       try{
         const response=await fetch(url);
         const data=await response.json();
-        console.log(data);
+//         console.log(data);
+        alert(data.messages);
         isp=data.isp;
         tz=data.location.timezone;
         l=data.location.city;
