@@ -64,7 +64,7 @@ document.getElementById('btt').addEventListener('click',function(e){
       try{
         const response=await fetch(url);
         const data=await response.json();
-//         console.log(data);
+        console.log(data);
         if(data.status==422){
           alert(data.messages);
         }
