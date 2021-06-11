@@ -1,4 +1,8 @@
-<?php include_once("home.html"); ?>
+<?php include_once("home.html"); 
 
 
-//Added one line to deploy in HEROKU
+//Added One line for Deployment
+
+?>
+
+
