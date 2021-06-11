@@ -40,7 +40,7 @@ async function initialize_map(){
 }).addTo(mymap);
 L.marker([39.04372,-77.48749]).addTo(mymap);
 
-console.log("map");
+// console.log("map");
 
 }
 
@@ -57,14 +57,14 @@ document.getElementById('btt').addEventListener('click',function(e){
     alert('Enter IP');
   }
   else{
-    console.log(x);
+//     console.log(x);
     
     var url = api_url + 'apiKey=' + api_key + '&ipAddress=' + x;
     const getData=async () =>{
       try{
         const response=await fetch(url);
         const data=await response.json();
-        console.log(data);
+//         console.log(data);
         if(data.code==422){
           alert(data.messages);
         }
@@ -78,7 +78,7 @@ document.getElementById('btt').addEventListener('click',function(e){
         // console.log(l);
         // document.getElementById('ip_add').innerHTML(`${i}`);
         let r=[data.location.lat,data.location.lng];
-        console.log(r);
+//         console.log(r);
         return r;
       }
       catch{
@@ -93,7 +93,7 @@ document.getElementById('btt').addEventListener('click',function(e){
 
     const viewMap =async () => {
       const value = await getData();
-      console.log(value);
+//       console.log(value);
       // console.log("In the map");
       mymap.removeLayer(L.marker);
       mymap.flyTo(value,12);
