@@ -27,9 +27,34 @@ var mymap=L.map('mapid');
 // console.log(loc);
 // }
 
+async function getInitLatLong(x){
+  var url = api_url + 'apiKey=' + api_key + '&ipAddress=' + x;
+    
+        const response=await fetch(url);
+        const data=await response.json();
+        console.log(data);
+        if(data.code==422){
+          alert(data.messages);
+        }
+        
+        isp=data.isp;
+        tz=data.location.timezone;
+        l=data.location.city;
+        i=data.ip;
+        console.log(isp);
+        // console.log(tz);
+        // console.log(l);
+        // document.getElementById('ip_add').innerHTML(`${i}`);
+        let r=[data.location.lat,data.location.lng];
+        console.log(r);
+        return r;
+}
+
 async function initialize_map(){
+  x = await getInitLatLong(0);
+  console.log(x);
     // var loc =await getLocation();
-   mymap.setView([39.04372,-77.48749], 10);  
+   mymap.setView([x[0],x[1]], 10);  
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   maxZoom: 18,
@@ -38,7 +63,7 @@ async function initialize_map(){
   zoomOffset: -1,
   accessToken: 'pk.eyJ1IjoidXNlcjE5OSIsImEiOiJja3BnanBrbHAyaGlvMm9ubGRmZHk5ZzMwIn0.pYCDSbruoLHSla59e6FkyA'
 }).addTo(mymap);
-L.marker([39.04372,-77.48749]).addTo(mymap);
+L.marker([x[0],x[1]]).addTo(mymap);
 
 // console.log("map");
 
