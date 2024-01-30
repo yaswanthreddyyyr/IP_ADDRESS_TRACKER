@@ -45,7 +45,7 @@
     /* bottom:50%; */
     /* background-image:"/images/pattern-bg.png";
      */
-     background-image: url('/images/pattern-bg.png');
+     background-image: url('./images/pattern-bg.png');
 }
 /* #middle{
     top: 200px;
